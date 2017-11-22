@@ -55,6 +55,7 @@ superpccox <- function(file1, file2, nstep, prop, nfold, cv.order, sub){
   km <- survfit(Surv(test.data$y,test.data$censoring.status)~fit.groups$v.pred)
   
   #Form reduced models to approximate the supervised principal component predictor.
+  #sink("/home/shiny/sink-examp.txt")
   sink("sink-examp.txt")
   fit.red<- superpc.predict.red(train.obj, train.data, test.data, threshold=pcm, n.components=2)
   sink()

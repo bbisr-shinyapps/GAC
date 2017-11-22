@@ -60,7 +60,7 @@ superpc <- function(data1, data2, nstep, prop, nfold, cv.order, splitIndex){
                     
                     formula    <- as.formula(paste("group ~", var))
                     res.logist <- glm(formula, data = final, family = binomial)
-                    est <- cbind(exp(cbind(OR = coef(res.logist), confint(res.logist))), pvalue = summary(res.logist)$coefficients[, 4])[2, ]
+                    est <- cbind(round(exp(cbind(OR = coef(res.logist), confint(res.logist))), 4), pvalue = round(summary(res.logist)$coefficients[, 4], 3))[2, ]
                     
                     return(est)
                   }))
